@@ -7,13 +7,15 @@ import (
 )
 
 func main() {
-	serverAddr := "192.168.1.100:9999" // Raspberry PiのIPアドレスとポート
+	serverAddr := "192.168.0.6:9999" // Raspberry PiのIPアドレスとポート
 	conn, err := net.Dial("udp", serverAddr)
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
 	}
 	defer conn.Close()
+
+	fmt.Println("serverAddr:", serverAddr)
 
 	var seqNum uint64 = 0
 	interval := 50 * time.Millisecond
